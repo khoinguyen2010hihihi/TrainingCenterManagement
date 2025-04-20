@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TrainingCenterManagement.ViewModels.ThongKeViewModel>
+
+@{
+    ViewBag.Title = "📊 Thống kê học viên theo khóa học";
+}
+
+<h2 class="text-center mb-4">📊 Thống kê số lượng học viên đăng ký theo từng khóa học</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Tên khóa học</th>
+            <th class="text-center">Số lượng học viên</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenKhoaHoc</td>
+                <td class="text-center">@item.SoLuongDangKy</td>
+            </tr>
+        }
+    </tbody>
+</table>

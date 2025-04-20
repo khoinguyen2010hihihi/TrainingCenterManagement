@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TrainingCenterManagement.ViewModels.ThongKeDoanhThuViewModel>
+@{
+    ViewBag.Title = "📅 Thống kê doanh thu theo thời gian";
+}
+
+<h2 class="text-center mb-4">📅 Thống kê doanh thu theo thời gian</h2>
+
+<form method="get" class="row mb-4">
+    <div class="col-md-3">
+        <label>Từ ngày</label>
+        <input type="date" name="tuNgay" class="form-control" value="@ViewBag.TuNgay" />
+    </div>
+    <div class="col-md-3">
+        <label>Đến ngày</label>
+        <input type="date" name="denNgay" class="form-control" value="@ViewBag.DenNgay" />
+    </div>
+    <div class="col-md-2 align-self-end">
+        <button type="submit" class="btn btn-primary w-100">Lọc</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Tên khóa học</th>
+            <th>Học phí</th>
+            <th class="text-center">Số HV</th>
+            <th class="text-end">Doanh thu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenKhoaHoc</td>
+                <td>@String.Format("{0:N0} VNĐ", item.HocPhi)</td>
+                <td class="text-center">@item.SoLuongDangKy</td>
+                <td class="text-end">@String.Format("{0:N0} VNĐ", item.DoanhThu)</td>
+            </tr>
+        }
+    </tbody>
+</table>

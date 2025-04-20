@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TrainingCenterManagement.Models.DangKyKhoaHoc>
+
+@{
+    ViewBag.Title = "Danh sách đăng ký khóa học";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📋 <strong>Danh sách đăng ký khóa học</strong></h2>
+
+    <div class="text-right mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            ➕ Thêm đăng ký
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded">
+            <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th>Học viên</th>
+                    <th>Khóa học</th>
+                    <th>Ngày đăng ký</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center align-middle">
+                        <td class="text-left">@item.HocVien.HoTen</td>
+                        <td class="text-left">@item.KhoaHoc.TenKhoaHoc</td>
+                        <td>@item.NgayDangKy.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.MaDangKy })" class="btn btn-warning btn-sm">✏️</a>
+                            <a href="@Url.Action("Details", new { id = item.MaDangKy })" class="btn btn-info btn-sm">🔍</a>
+                            <a href="@Url.Action("Delete", new { id = item.MaDangKy })" class="btn btn-danger btn-sm">🗑️</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

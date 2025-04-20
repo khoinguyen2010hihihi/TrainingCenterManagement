@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<h2 class="text-center mt-4">🎓 Hệ thống quản lý trung tâm đào tạo</h2>
+
+<div class="d-flex flex-column align-items-center mt-5 gap-3">
+
+    @if (Session["VaiTro"]?.ToString() == "Admin")
+    {
+        <h4 class="text-success mb-3">Chào mừng Quản trị viên!</h4>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="@Url.Action("Index", "KhoaHocs")" class="btn btn-success btn-lg">
+                📚 Quản lý khóa học
+            </a>
+
+            <a href="@Url.Action("Index", "HocViens")" class="btn btn-info btn-lg">
+                👨‍🎓 Quản lý học viên
+            </a>
+
+            <a href="@Url.Action("Index", "DangKyKhoaHocs")" class="btn btn-warning btn-lg">
+                📝 Quản lý đăng ký
+            </a>
+
+            <a href="@Url.Action("Index", "ThongKe")" class="btn btn-dark btn-lg">
+                📈 Thống kê học viên
+            </a>
+
+            <a href="@Url.Action("DoanhThu", "ThongKe")" class="btn btn-danger btn-lg">
+                💰 Thống kê doanh thu
+            </a>
+
+            <a href="@Url.Action("DoanhThuTheoThoiGian", "ThongKe")" class="btn btn-outline-dark btn-lg">
+                📆 Doanh thu theo thời gian
+            </a>
+        </div>
+    }
+    else if (Session["VaiTro"]?.ToString() == "HocVien")
+    {
+        <h4 class="text-primary mb-3">Xin chào học viên @Session["HoTen"]!</h4>
+
+        <div class="d-flex justify-content-center gap-3">
+            <a href="@Url.Action("Index", "DangKyKhoaHocs")" class="btn btn-warning btn-lg">
+                📝 Quản lý đăng ký
+            </a>
+
+            <a href="@Url.Action("Index", "ThongKe")" class="btn btn-dark btn-lg">
+                📈 Thống kê học viên
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            ⚠️ Bạn chưa đăng nhập. Vui lòng
+            <a href="@Url.Action("DangNhap", "TaiKhoan")">đăng nhập</a> để sử dụng hệ thống.
+        </div>
+    }
+
+</div>

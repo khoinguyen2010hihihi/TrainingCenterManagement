@@ -1,0 +1,42 @@
+﻿@model TrainingCenterManagement.Models.DangKyKhoaHoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DangKyKhoaHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HocVien.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocVien.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhoaHoc.TenKhoaHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhoaHoc.TenKhoaHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDangKy }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

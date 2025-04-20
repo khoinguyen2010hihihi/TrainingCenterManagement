@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TrainingCenterManagement.Models.HocVien>
+
+@{
+    ViewBag.Title = "Danh sách học viên";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">🎓 <strong>Danh sách học viên</strong></h2>
+
+    <div class="text-right mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            ➕ Thêm học viên
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded">
+            <thead class="bg-primary text-white text-center">
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>SĐT</th>
+                    <th>Email</th>
+                    <th>Tài khoản</th>
+                    <th>Mật khẩu</th>
+                    <th>Vai trò</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center align-middle">
+                        <td class="text-left">@item.HoTen</td>
+                        <td>@item.NgaySinh.ToString("dd/MM/yyyy")</td>
+                        <td>@item.SoDienThoai</td>
+                        <td>@item.Email</td>
+                        <td>@item.TaiKhoan</td>
+                        <td>@item.MatKhau</td>
+                        <td>@item.VaiTro</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.MaHocVien })" class="btn btn-warning btn-sm">✏️</a>
+                            <a href="@Url.Action("Details", new { id = item.MaHocVien })" class="btn btn-info btn-sm">🔍</a>
+                            <a href="@Url.Action("Delete", new { id = item.MaHocVien })" class="btn btn-danger btn-sm">🗑️</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

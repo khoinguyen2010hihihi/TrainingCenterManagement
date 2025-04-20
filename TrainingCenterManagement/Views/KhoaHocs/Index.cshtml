@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TrainingCenterManagement.Models.KhoaHoc>
+
+@{
+    ViewBag.Title = "Danh sách khóa học";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        📚 <strong>Danh sách khóa học</strong>
+    </h2>
+
+    <div class="text-right mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            ➕ Thêm khóa học
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-sm rounded">
+            <thead class="bg-dark text-white">
+                <tr class="text-center">
+                    <th>Mã KH</th>
+                    <th>Tên khóa học</th>
+                    <th>Giảng viên</th>
+                    <th>Học phí</th>
+                    <th>Khai giảng</th>
+                    <th>Số lượng tối đa</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="align-middle text-center">
+                        <td>@item.MaKhoaHoc</td>
+                        <td class="text-left">@item.TenKhoaHoc</td>
+                        <td class="text-left">@item.GiangVien</td>
+                        <td>@String.Format("{0:N0} VNĐ", item.HocPhi)</td>
+                        <td>@item.ThoiGianKhaiGiang.ToString("dd/MM/yyyy")</td>
+                        <td>@item.SoLuongToiDa</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.MaKhoaHoc })" class="btn btn-warning btn-sm">✏️ Sửa</a>
+                            <a href="@Url.Action("Details", new { id = item.MaKhoaHoc })" class="btn btn-info btn-sm">🔍 Chi tiết</a>
+                            <a href="@Url.Action("Delete", new { id = item.MaKhoaHoc })" class="btn btn-danger btn-sm">🗑️ Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

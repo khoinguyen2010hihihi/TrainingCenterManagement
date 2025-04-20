@@ -1,0 +1,58 @@
+﻿@model TrainingCenterManagement.Models.KhoaHoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KhoaHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenKhoaHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKhoaHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiangVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiangVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HocPhi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocPhi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianKhaiGiang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianKhaiGiang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongToiDa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongToiDa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKhoaHoc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

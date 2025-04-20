@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Trung Tâm Đào Tạo</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container d-flex justify-content-between">
+            <div class="d-flex">
+                @Html.ActionLink("🏫 Trung Tâm", "Index", "Home", null, new { @class = "navbar-brand" })
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">@Html.ActionLink("Trang chủ", "Index", "Home", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Liên hệ", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+                @if (Session["TaiKhoan"] != null)
+                {
+                    <span class="text-white mr-3">👋 Xin chào, @Session["HoTen"] (@Session["VaiTro"])</span>
+                    <a href="@Url.Action("DangXuat", "TaiKhoan")" class="btn btn-outline-danger btn-sm">Đăng xuất</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("DangNhap", "TaiKhoan")" class="btn btn-outline-light btn-sm">Đăng nhập</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content mt-4">
+        @RenderBody()
+        <hr />
+        <footer class="text-center text-muted">
+            <p>&copy; @DateTime.Now.Year - Hệ thống quản lý trung tâm đào tạo</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
