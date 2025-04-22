@@ -1,74 +1,87 @@
 ﻿@model TrainingCenterManagement.Models.HocVien
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết Học viên";
 }
 
-<h2>Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Chi tiết Học viên</h2>
 
-<div>
-    <h4>HocVien</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">Thông tin Học viên</h4>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.HoTen)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.HoTen)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.NgaySinh)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.NgaySinh)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.SoDienThoai)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.SoDienThoai)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoDienThoai)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.TaiKhoan)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.TaiKhoan)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.MatKhau)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.MatKhau)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.VaiTro)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.VaiTro)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TaiKhoan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TaiKhoan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MatKhau)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VaiTro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VaiTro)
-        </dd>
-
-    </dl>
+            <hr />
+            <div class="text-center">
+                <p>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaHocVien }, new { @class = "btn btn-warning btn-sm" })
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">Quay lại danh sách</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHocVien }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

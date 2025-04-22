@@ -1,58 +1,69 @@
 ﻿@model TrainingCenterManagement.Models.KhoaHoc
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết Khóa học";
 }
 
-<h2>Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Chi tiết Khóa học</h2>
 
-<div>
-    <h4>KhoaHoc</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenKhoaHoc)
-        </dt>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">Thông tin Khóa học</h4>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.TenKhoaHoc)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.TenKhoaHoc)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.TenKhoaHoc)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiangVien)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.GiangVien)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.GiangVien)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.GiangVien)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.HocPhi)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.HocPhi)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HocPhi)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.ThoiGianKhaiGiang)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.ThoiGianKhaiGiang)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.HocPhi)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.SoLuongToiDa)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.SoLuongToiDa)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ThoiGianKhaiGiang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThoiGianKhaiGiang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoLuongToiDa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoLuongToiDa)
-        </dd>
-
-    </dl>
+            <hr />
+            <div class="text-center">
+                <p>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaKhoaHoc }, new { @class = "btn btn-warning btn-sm" })
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">Quay lại danh sách</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKhoaHoc }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

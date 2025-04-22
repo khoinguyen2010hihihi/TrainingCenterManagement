@@ -1,42 +1,51 @@
 ﻿@model TrainingCenterManagement.Models.DangKyKhoaHoc
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết Đăng ký Khóa học";
 }
 
-<h2>Details</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Chi tiết Đăng ký Khóa học</h2>
 
-<div>
-    <h4>DangKyKhoaHoc</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HocVien.HoTen)
-        </dt>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">Thông tin Đăng ký Khóa học</h4>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.HocVien.HoTen)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.HocVien.HoTen)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.HocVien.HoTen)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhoaHoc.TenKhoaHoc)
-        </dt>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.KhoaHoc.TenKhoaHoc)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.KhoaHoc.TenKhoaHoc)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhoaHoc.TenKhoaHoc)
-        </dd>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>@Html.DisplayNameFor(model => model.NgayDangKy)</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.NgayDangKy)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDangKy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayDangKy)
-        </dd>
-
-    </dl>
+            <hr />
+            <div class="text-center">
+                <p>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaDangKy }, new { @class = "btn btn-warning btn-sm" })
+                    <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">Quay lại danh sách</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDangKy }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

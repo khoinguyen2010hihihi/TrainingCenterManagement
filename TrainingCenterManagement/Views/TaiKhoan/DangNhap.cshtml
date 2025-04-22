@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Đăng nhập";
-    Layout = null; // Nếu không dùng _Layout.cshtml
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -69,7 +69,7 @@
 <body>
 
     <div class="login-container">
-        <h3 class="login-title">🔐 Đăng nhập hệ thống</h3>
+        <h3 class="login-title">Đăng nhập hệ thống</h3>
 
         @if (ViewBag.Loi != null)
         {
@@ -79,12 +79,12 @@
         @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post))
         {
             <div class="mb-3">
-                <label class="login-label">📛 Tài khoản</label>
+                <label class="login-label">Tài khoản</label>
                 <input type="text" name="taiKhoan" class="form-control form-control-lg" placeholder="Nhập tài khoản..." required />
             </div>
 
             <div class="mb-4">
-                <label class="login-label">🔒 Mật khẩu</label>
+                <label class="login-label">Mật khẩu</label>
                 <input type="password" name="matKhau" class="form-control form-control-lg" placeholder="Nhập mật khẩu..." required />
             </div>
 
