@@ -16,6 +16,18 @@ namespace TrainingCenterManagement.Controllers
         private TrainingCenterContext db = new TrainingCenterContext();
 
         // GET: DangKyKhoaHocs
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (Session["VaiTro"]?.ToString() == "Admin" || Session["VaiTro"]?.ToString() == "HocVien")
+            {
+                base.OnActionExecuting(filterContext);
+            }
+            else
+            {
+                filterContext.Result = new RedirectResult("/TaiKhoan/DangNhap");
+            }
+        }
+
         public ActionResult Index()
         {
             var dangKyKhoaHocs = db.DangKyKhoaHocs.Include(d => d.HocVien).Include(d => d.KhoaHoc);
@@ -114,70 +126,6 @@ namespace TrainingCenterManagement.Controllers
             }
 
             return View(dangKyKhoaHoc);
-        }
-
-        // GET: DangKyKhoaHocs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            DangKyKhoaHoc dangKyKhoaHoc = db.DangKyKhoaHocs.Find(id);
-            if (dangKyKhoaHoc == null)
-                return HttpNotFound();
-
-            ViewBag.MaHocVien = new SelectList(db.HocViens, "MaHocVien", "HoTen", dangKyKhoaHoc.MaHocVien);
-            ViewBag.MaKhoaHoc = new SelectList(db.KhoaHocs, "MaKhoaHoc", "TenKhoaHoc", dangKyKhoaHoc.MaKhoaHoc);
-            return View(dangKyKhoaHoc);
-        }
-
-        // POST: DangKyKhoaHocs/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDangKy,MaHocVien,MaKhoaHoc,NgayDangKy")] DangKyKhoaHoc dangKyKhoaHoc)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dangKyKhoaHoc).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.MaHocVien = new SelectList(db.HocViens, "MaHocVien", "HoTen", dangKyKhoaHoc.MaHocVien);
-            ViewBag.MaKhoaHoc = new SelectList(db.KhoaHocs, "MaKhoaHoc", "TenKhoaHoc", dangKyKhoaHoc.MaKhoaHoc);
-            return View(dangKyKhoaHoc);
-        }
-
-        // GET: DangKyKhoaHocs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            DangKyKhoaHoc dangKyKhoaHoc = db.DangKyKhoaHocs.Find(id);
-            if (dangKyKhoaHoc == null)
-                return HttpNotFound();
-
-            return View(dangKyKhoaHoc);
-        }
-
-        // POST: DangKyKhoaHocs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            DangKyKhoaHoc dangKyKhoaHoc = db.DangKyKhoaHocs.Find(id);
-            db.DangKyKhoaHocs.Remove(dangKyKhoaHoc);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                db.Dispose();
-
-            base.Dispose(disposing);
         }
     }
 }

@@ -26,11 +26,11 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" style="margin-right: -75px;">
                 @if (Session["TaiKhoan"] != null)
                 {
                     <span class="text-white mr-3">👋 Xin chào, @Session["HoTen"] (@Session["VaiTro"])</span>
-                    <a href="@Url.Action("DangXuat", "TaiKhoan")" class="btn btn-outline-danger btn-sm">Đăng xuất</a>
+                    <a href="@Url.Action("DangXuat", "TaiKhoan")" class="btn btn-outline-danger btn-sm" style="margin-left: 10px;">Đăng xuất</a>
                 }
                 else
                 {

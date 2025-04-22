@@ -5,16 +5,84 @@
     bool isHocVien = ViewBag.IsHocVien ?? false;
 }
 
-<h2 class="mb-4">📌 Tạo đăng ký khóa học</h2>
+<style>
+    .create-form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        .create-form-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #4e73df;
+            margin-bottom: 30px;
+        }
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        .create-form-container .form-group {
+            margin-bottom: 20px;
+        }
 
-        <!-- Học viên -->
+        .create-form-container label {
+            font-weight: bold;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .create-form-container .form-control {
+            border-radius: 8px;
+            font-size: 1rem;
+            padding: 12px;
+            border: 1px solid #ddd;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .create-form-container .btn-primary {
+            background-color: #4e73df;
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+            .create-form-container .btn-primary:hover {
+                background-color: #2e59d9;
+            }
+
+        .create-form-container .text-danger {
+            font-size: 0.9rem;
+            color: #e74a3b;
+        }
+
+        .create-form-container .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #4e73df;
+            font-weight: bold;
+        }
+
+            .create-form-container .back-link:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="create-form-container">
+    <h2>📚 Tạo đăng ký khóa học</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
         <div class="form-group">
             @Html.Label("Học viên", htmlAttributes: new { @class = "control-label" })
             @if (isHocVien)
@@ -28,27 +96,24 @@
             }
         </div>
 
-        <!-- Khóa học -->
         <div class="form-group">
             @Html.Label("Khóa học", htmlAttributes: new { @class = "control-label" })
             @Html.DropDownList("MaKhoaHoc", null, htmlAttributes: new { @class = "form-control" })
         </div>
 
-        <!-- Ngày đăng ký -->
         <div class="form-group">
             @Html.LabelFor(model => model.NgayDangKy, htmlAttributes: new { @class = "control-label" })
             @Html.TextBoxFor(model => model.NgayDangKy, new { @class = "form-control", type = "date" })
         </div>
 
-        <!-- Nút tạo -->
         <div class="form-group mt-3">
             <input type="submit" value="Tạo mới" class="btn btn-primary" />
         </div>
-    </div>
-}
+    }
 
-<div class="mt-3">
-    @Html.ActionLink("⬅ Quay lại danh sách", "Index", null, new { @class = "btn btn-link" })
+    <div class="mt-3">
+        @Html.ActionLink("⬅ Quay lại danh sách", "Index", null, new { @class = "btn btn-link" })
+    </div>
 </div>
 
 @section Scripts {

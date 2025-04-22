@@ -16,6 +16,18 @@ namespace TrainingCenterManagement.Controllers
         private TrainingCenterContext db = new TrainingCenterContext();
 
         // GET: HocViens
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (Session["VaiTro"]?.ToString() == "Admin")
+            {
+                base.OnActionExecuting(filterContext);
+            }
+            else if (Session["VaiTro"]?.ToString() != "HocVien")
+            {
+                filterContext.Result = new RedirectResult("/TaiKhoan/DangNhap");
+            }
+        }
+
         public ActionResult Index()
         {
             return View(db.HocViens.ToList());
@@ -43,8 +55,6 @@ namespace TrainingCenterManagement.Controllers
         }
 
         // POST: HocViens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaHocVien,HoTen,NgaySinh,SoDienThoai,Email,TaiKhoan,MatKhau")] HocVien hocVien)
@@ -76,8 +86,6 @@ namespace TrainingCenterManagement.Controllers
         }
 
         // POST: HocViens/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaHocVien,HoTen,NgaySinh,SoDienThoai,Email,TaiKhoan,MatKhau,VaiTro")] HocVien hocVien)

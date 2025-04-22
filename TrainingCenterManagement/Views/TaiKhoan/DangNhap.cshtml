@@ -1,33 +1,101 @@
 ﻿@{
     ViewBag.Title = "Đăng nhập";
+    Layout = null; // Nếu không dùng _Layout.cshtml
 }
 
-<div class="container mt-5" style="max-width: 400px;">
-    <div class="card shadow-lg border-0">
-        <div class="card-body">
-            <h3 class="text-center mb-4">🔐 Đăng nhập hệ thống</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Đăng nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-            @if (ViewBag.Loi != null)
-            {
-                <div class="alert alert-danger text-center">@ViewBag.Loi</div>
+        .login-container {
+            max-width: 420px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+
+            .login-container:hover {
+                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
             }
 
-            @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post))
-            {
-                <div class="form-group mb-3">
-                    <label class="fw-bold">Tài khoản</label>
-                    <input type="text" name="taiKhoan" class="form-control form-control-lg" placeholder="Nhập tài khoản..." required />
-                </div>
+        .login-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
 
-                <div class="form-group mb-4">
-                    <label class="fw-bold">Mật khẩu</label>
-                    <input type="password" name="matKhau" class="form-control form-control-lg" placeholder="Nhập mật khẩu..." required />
-                </div>
+        .login-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #555;
+        }
 
-                <button type="submit" class="btn btn-primary btn-lg w-100">
-                    🔓 Đăng nhập
-                </button>
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            font-weight: bold;
+            background-color: #4e73df;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #2e59d9;
             }
+
+        .login-footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h3 class="login-title">🔐 Đăng nhập hệ thống</h3>
+
+        @if (ViewBag.Loi != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.Loi</div>
+        }
+
+        @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post))
+        {
+            <div class="mb-3">
+                <label class="login-label">📛 Tài khoản</label>
+                <input type="text" name="taiKhoan" class="form-control form-control-lg" placeholder="Nhập tài khoản..." required />
+            </div>
+
+            <div class="mb-4">
+                <label class="login-label">🔒 Mật khẩu</label>
+                <input type="password" name="matKhau" class="form-control form-control-lg" placeholder="Nhập mật khẩu..." required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">Đăng nhập</button>
+        }
+
+        <div class="login-footer">
+            © @DateTime.Now.Year - Trung tâm đào tạo
         </div>
     </div>
-</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

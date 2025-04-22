@@ -12,6 +12,18 @@ namespace TrainingCenterManagement.Controllers
         private TrainingCenterContext db = new TrainingCenterContext();
 
         // Thống kê số học viên theo từng khóa học (ai cũng xem được)
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (Session["VaiTro"]?.ToString() == "Admin" || Session["VaiTro"]?.ToString() == "HocVien")
+            {
+                base.OnActionExecuting(filterContext);
+            }
+            else
+            {
+                filterContext.Result = new RedirectResult("/TaiKhoan/DangNhap");
+            }
+        }
+
         public ActionResult Index()
         {
             var thongKe = db.KhoaHocs
