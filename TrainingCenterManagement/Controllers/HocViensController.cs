@@ -43,7 +43,9 @@ namespace TrainingCenterManagement.Controllers
             HocVien hocVien = db.HocViens.Find(id);
             if (hocVien == null)
             {
-                return HttpNotFound();
+                ViewBag.Message = "❌ Học viên không tồn tại!";
+                ViewBag.RedirectTo = "HocViens";
+                return View("Error");
             }
             return View(hocVien);
         }
